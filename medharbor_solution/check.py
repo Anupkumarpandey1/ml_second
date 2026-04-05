@@ -1,0 +1,11 @@
+c = open('medharbor_case_study.tex', encoding='utf-8').read()
+b = c.count(r'\begin{')
+e = c.count(r'\end{')
+print(f'Lines : {c.count(chr(10))}')
+print(f'begin/end : {b}/{e}  balanced={b==e}')
+print(f'\\begin{{document}} : {"\\begin{document}" in c}')
+print(f'\\end{{document}}   : {"\\end{document}" in c}')
+print(f'Size  : {len(c):,} bytes')
+secs = [l.strip() for l in c.split('\n') if l.strip().startswith('\\section')]
+print(f'\nSections ({len(secs)}):')
+for s in secs: print(' ', s[:80])
